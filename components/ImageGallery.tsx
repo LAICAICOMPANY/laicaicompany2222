@@ -37,9 +37,9 @@ export const ImageGallery: React.FC = () => {
       <div className="w-full relative">
         <div className="flex flex-col items-center mb-12 px-4">
           <p className="text-sm md:text-sm font-semibold text-blue-600 tracking-wider uppercase mb-4">Our Expertise</p>
-          <h3 className="text-2xl md:text-4xl lg:text-5xl font-bold tracking-tight text-current text-center leading-snug md:leading-tight mt-6">
-            저희는 전 직원 <span className="bg-[#2454ff] text-white px-3 py-1 mx-1 inline-block transform -skew-x-6"><span className="transform skew-x-6 inline-block">10년 이상</span></span>의 <span className="bg-[#2454ff] text-white px-3 py-1 mx-1 inline-block transform -skew-x-6"><span className="transform skew-x-6 inline-block">중국 현지 생활</span></span>을 경험한<br className="hidden md:block mt-4"/>
-            <span className="bg-[#2454ff] text-white px-3 py-1 mx-1 inline-block transform -skew-x-6 mt-4"><span className="transform skew-x-6 inline-block">중국 최상위 대학출신 인재</span></span>들이 함께합니다.
+          <h3 className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-bold tracking-tight text-current text-center leading-[1.6] md:leading-tight mt-6 break-keep">
+            저희는 전 직원 <span className="bg-[#2454ff] text-white px-2 md:px-3 py-1 mx-1 inline-block transform -skew-x-6"><span className="transform skew-x-6 inline-block">10년 이상</span></span>의 <span className="bg-[#2454ff] text-white px-2 md:px-3 py-1 mx-1 inline-block transform -skew-x-6"><span className="transform skew-x-6 inline-block">중국 현지 생활</span></span>을 경험한<br className="hidden md:block mt-4"/>
+            <span className="bg-[#2454ff] text-white px-2 md:px-3 py-1 mx-1 inline-block transform -skew-x-6 mt-2 md:mt-4"><span className="transform skew-x-6 inline-block">중국 최상위 대학출신 인재</span></span>들이 함께합니다.
           </h3>
         </div>
 
@@ -52,7 +52,7 @@ export const ImageGallery: React.FC = () => {
             {marqueeImages.map((src, idx) => (
               <div 
                 key={idx} 
-                className="relative flex-none h-56 md:h-80 w-80 md:w-[28rem] rounded-xl md:rounded-2xl overflow-hidden shadow-md bg-white hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer grayscale-[20%] hover:grayscale-0 group"
+                className="relative flex-none h-48 md:h-64 lg:h-80 w-[70vw] sm:w-[50vw] md:w-80 lg:w-[28rem] rounded-xl md:rounded-2xl overflow-hidden shadow-md bg-white hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer grayscale-[20%] hover:grayscale-0 group"
               >
                 <img 
                   src={src} 

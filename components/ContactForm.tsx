@@ -3,22 +3,22 @@ import { Mail, Phone } from 'lucide-react';
 
 export const ContactForm: React.FC = () => {
   return (
-    <section id="contact" className="py-32 relative">
-      <div className="container mx-auto px-6 lg:px-12 max-w-5xl">
+    <section id="contact" className="py-16 md:py-32 relative px-4">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-12 max-w-5xl">
         <div className="flex flex-col items-center">
           
-          <div className="text-center mb-16">
-            <h4 className="text-gray-500 font-semibold uppercase tracking-widest mb-6 text-sm">Contact Us</h4>
-            <h2 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter leading-tight mb-8 text-brand-gray whitespace-nowrap">
-              저희와 프로젝트를 함께 <span className="text-blue-600">하시겠습니까?</span>
+          <div className="text-center mb-12 md:mb-16">
+            <h4 className="text-gray-500 font-semibold uppercase tracking-widest mb-4 md:mb-6 text-xs md:text-sm">Contact Us</h4>
+            <h2 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter leading-tight mb-6 md:mb-8 text-brand-gray break-keep">
+              저희와 프로젝트를 함께 <br className="block sm:hidden" /><span className="text-blue-600">하시겠습니까?</span>
             </h2>
-            <p className="text-gray-600 text-xl leading-relaxed font-light mx-auto max-w-md">
+            <p className="text-gray-600 text-base md:text-xl leading-relaxed font-light mx-4 md:mx-auto max-w-md break-keep">
               중국인 고객 유입이 가능한지 알아보고 싶다면?
             </p>
           </div>
 
           <div className="w-full">
-            <div className="bg-white p-10 md:p-14 rounded-[2.5rem] shadow-xl shadow-black/5 border border-black/5">
+            <div className="bg-white p-6 sm:p-10 md:p-14 rounded-[2rem] md:rounded-[2.5rem] shadow-xl shadow-black/5 border border-black/5">
               <form
                 action="https://formspree.io/f/meeagqzq"
                 method="POST"

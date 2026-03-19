@@ -61,7 +61,7 @@ export const Hero: React.FC = () => {
       <div className="light-rays pointer-events-none z-0"></div>
 
       {/* Core Glowing Core */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[30vw] h-[30vw] bg-blue-400/20 mix-blend-screen rounded-full filter blur-[100px] pointer-events-none z-0"></div>
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vw] md:w-[30vw] md:h-[30vw] bg-blue-400/20 mix-blend-screen rounded-full filter blur-[100px] pointer-events-none z-0"></div>
 
       {/* Dynamic Parallax Typography */}
       <div className="relative z-10 w-full px-6 md:px-20 text-center flex flex-col items-center">
@@ -72,12 +72,12 @@ export const Hero: React.FC = () => {
               transform: `translate(${mousePosition.x * -30}px, ${mousePosition.y * -20}px)`
             }}
           >
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-black font-display tracking-tight leading-tight w-full max-w-7xl mx-auto text-white text-center">
-              <span className="bg-[#1D4ED8] px-4 py-1 inline-block mb-2">중국인 고객이 이미 많으신가요?</span><br />
-              <span className="inline-block mb-12">그렇다면 잘못찾아오셨습니다</span>
+            <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-black font-display tracking-tight leading-tight w-full max-w-7xl mx-auto text-white text-center break-keep">
+              <span className="bg-[#1D4ED8] px-3 md:px-4 py-1 inline-block mb-2">중국인 고객이 이미 많으신가요?</span><br />
+              <span className="inline-block mb-6 md:mb-12">그렇다면 잘못찾아오셨습니다</span>
             </h1>
-            <div className="mt-8">
-              <p className="text-xl md:text-3xl font-bold tracking-tight text-white inline-block border-b-2 border-white/80 pb-1">
+            <div className="mt-6 md:mt-8">
+              <p className="text-lg sm:text-xl md:text-3xl font-bold tracking-tight text-white inline-block border-b-2 border-white/80 pb-1 break-keep">
                 불만족시 100% 환불 해드리는 중국 SNS플랫폼 전문 광고대행사
               </p>
             </div>

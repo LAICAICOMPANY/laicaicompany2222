@@ -3,20 +3,20 @@ import { Heart } from 'lucide-react';
 
 export const Reference: React.FC = () => {
     return (
-        <section id="reference" className="py-24 bg-black overflow-hidden border-t-2 border-white/10 relative">
+        <section id="reference" className="py-16 md:py-24 bg-black overflow-hidden border-t-2 border-white/10 relative">
             <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/20 to-black pointer-events-none z-0"></div>
             <div className="container mx-auto px-6 relative z-10">
-                <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+                <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 md:mb-16 gap-4 md:gap-6">
                     <div className="flex items-start gap-4">
                         <span className="text-brand-orange text-[8rem] leading-[0.8] font-black opacity-20 font-display select-none hidden md:block">03</span>
                         <div>
-                            <h4 className="text-brand-orange font-bold uppercase tracking-[0.2em] mb-4">[ Reference ]</h4>
-                            <h2 className="text-5xl md:text-6xl font-black font-display text-white uppercase tracking-tighter">NEOTERIA</h2>
+                            <h4 className="text-brand-orange font-bold uppercase tracking-[0.2em] mb-2 md:mb-4 text-sm md:text-base">[ Reference ]</h4>
+                            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black font-display text-white uppercase tracking-tighter">NEOTERIA</h2>
                         </div>
                     </div>
-                    <div className="border-l-2 border-brand-orange pl-6">
-                        <p className="text-gray-400 max-w-md text-lg tracking-wider">
-                            성공적인 아이웨어 브랜드 마케팅 사례. <br />
+                    <div className="border-l-2 border-brand-orange pl-4 md:pl-6">
+                        <p className="text-gray-400 max-w-md text-base md:text-lg tracking-wider break-keep">
+                            성공적인 아이웨어 브랜드 마케팅 사례. <br className="hidden md:block" />
                             실제 유저들의 자발적인 리뷰와 인플루언서 마케팅이 만들어낸 바이럴 효과.
                         </p>
                     </div>

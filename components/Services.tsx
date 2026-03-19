@@ -54,12 +54,12 @@ export const Services: React.FC = () => {
   };
 
   return (
-    <section id="services" className="py-32 relative">
+    <section id="services" className="py-16 md:py-32 relative">
       <div className="container mx-auto px-6 lg:px-12 max-w-7xl">
-        <div className="flex flex-col mb-20 text-center items-center">
+        <div className="flex flex-col mb-12 md:mb-20 text-center items-center">
           <h4 className="text-gray-500 font-semibold tracking-widest uppercase mb-4 text-sm">Services</h4>
-          <h2 className="text-5xl md:text-7xl font-bold font-display text-brand-gray tracking-tighter mb-6">마케팅 전략</h2>
-          <p className="text-gray-500 max-w-2xl text-xl leading-relaxed">
+          <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold font-display text-brand-gray tracking-tighter mb-4 md:mb-6">마케팅 전략</h2>
+          <p className="text-gray-500 max-w-2xl text-base md:text-xl leading-relaxed break-keep">
             브랜드의 성장을 위한 빈틈없는 중국 마케팅 솔루션.<br className="hidden md:block" />단계별로 치밀하게 신뢰를 쌓아갑니다.
           </p>
         </div>
@@ -68,7 +68,7 @@ export const Services: React.FC = () => {
           {services.map((service, idx) => (
             <div
               key={idx}
-              className={`relative flex flex-col p-12 rounded-[2.5rem] transition-all duration-500 group overflow-hidden border
+              className={`relative flex flex-col p-8 md:p-12 rounded-[2rem] md:rounded-[2.5rem] transition-all duration-500 group overflow-hidden border
                     ${service.recommended
                   ? 'bg-brand-gray text-white border-transparent'
                   : 'bg-white text-brand-gray border-black/5 hover:border-black/10 hover:shadow-xl'
@@ -78,8 +78,8 @@ export const Services: React.FC = () => {
                 <div className="absolute top-0 inset-x-0 h-1 bg-blue-500"></div>
               )}
 
-              <div className="mb-10">
-                <h3 className="text-4xl font-bold tracking-tight mb-2">{service.title}</h3>
+              <div className="mb-8 md:mb-10">
+                <h3 className="text-3xl md:text-4xl font-bold tracking-tight mb-2">{service.title}</h3>
                 {service.recommended && (
                   <span className="inline-block bg-white/10 text-white rounded-full px-3 py-1 text-xs tracking-widest uppercase mt-2 font-medium">
                     Most Popular
@@ -87,11 +87,11 @@ export const Services: React.FC = () => {
                 )}
               </div>
 
-              <div className="flex-grow space-y-5 mb-14">
+              <div className="flex-grow space-y-4 md:space-y-5 mb-10 md:mb-14">
                 {service.features.map((feature, fIdx) => (
-                  <div key={fIdx} className="flex items-start gap-4">
+                  <div key={fIdx} className="flex items-start gap-3 md:gap-4">
                     <span className={`text-xl leading-none mt-1 ${service.recommended ? 'text-blue-400' : 'text-blue-600'}`}>•</span>
-                    <span className={`text-lg font-medium tracking-tight ${service.recommended ? 'text-white/80' : 'text-gray-600'}`}>{feature}</span>
+                    <span className={`text-base md:text-lg font-medium tracking-tight break-keep ${service.recommended ? 'text-white/80' : 'text-gray-600'}`}>{feature}</span>
                   </div>
                 ))}
               </div>
