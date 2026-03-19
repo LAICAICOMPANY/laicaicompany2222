@@ -78,9 +78,12 @@ export const Hero: React.FC = () => {
               </span>
               <span className="inline-block mb-6 md:mb-12">그렇다면 잘못찾아오셨습니다</span>
             </h1>
-            <div className="mt-6 md:mt-8">
-              <p className="text-lg sm:text-xl md:text-3xl font-bold tracking-tight text-white inline-block border-b-2 border-white/80 pb-1 break-keep">
-                불만족시 100% 환불 해드리는 중국 SNS플랫폼 전문 광고대행사
+            <div className="mt-6 md:mt-8 flex flex-col items-center">
+              <p className="text-lg sm:text-xl md:text-3xl font-bold tracking-tight text-white inline-block border-b-2 border-white/80 pb-1 break-keep leading-relaxed">
+                중국 SNS플랫폼 전문 광고대행사
+              </p>
+              <p className="font-paperlogy font-light text-sm md:text-base text-gray-300 mt-3 md:mt-4 tracking-wider">
+                불만족시 100% 환불
               </p>
             </div>
           </div>
