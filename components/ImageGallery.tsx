@@ -52,7 +52,7 @@ export const ImageGallery: React.FC = () => {
             {marqueeImages.map((src, idx) => (
               <div 
                 key={idx} 
-                className="relative flex-none h-48 md:h-64 lg:h-80 w-[70vw] sm:w-[50vw] md:w-80 lg:w-[28rem] rounded-xl md:rounded-2xl overflow-hidden shadow-md bg-white hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer grayscale-[20%] hover:grayscale-0 group"
+                className="relative flex-none h-48 md:h-64 lg:h-80 w-[70%] md:w-80 lg:w-[28rem] rounded-xl md:rounded-2xl overflow-hidden shadow-md bg-white hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer grayscale-[20%] hover:grayscale-0 group"
               >
                 <img 
                   src={src} 

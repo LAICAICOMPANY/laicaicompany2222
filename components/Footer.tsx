@@ -14,7 +14,7 @@ export const Footer: React.FC = () => {
         </div>
 
         <div className="mt-16 md:mt-32 text-center flex items-center justify-center">
-          <h1 className="text-[20vw] leading-[0.75] font-black tracking-tighter text-transparent select-none" style={{ WebkitTextStroke: '2px rgba(255,255,255,0.05)' }}>
+          <h1 className="text-[4.5rem] md:text-[5.5rem] leading-[0.75] font-black tracking-tighter text-transparent select-none" style={{ WebkitTextStroke: '2px rgba(255,255,255,0.05)' }}>
             LAICAI
           </h1>
         </div>

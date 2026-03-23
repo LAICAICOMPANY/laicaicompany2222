@@ -40,7 +40,7 @@ export const Navbar: React.FC<NavbarProps> = ({ isLightMode = false }) => {
   return (
     <>
       {/* Floating Pill Navbar */}
-      <nav className={`fixed top-6 md:top-8 left-1/2 -translate-x-1/2 z-[100] transition-colors duration-500 rounded-full px-6 md:px-8 py-3 w-[90%] md:w-[600px] flex items-center justify-between backdrop-blur-xl border border-white/10
+      <nav className={`fixed top-6 md:top-8 left-1/2 -translate-x-1/2 z-[100] transition-colors duration-500 rounded-full px-6 md:px-8 py-3 w-[90%] max-w-[400px] flex items-center justify-between backdrop-blur-xl border border-white/10
         ${isLightMode ? 'bg-white/40 text-black shadow-lg shadow-black/5' : 'bg-black/40 text-white shadow-lg shadow-white/5'}
       `}>
         <button

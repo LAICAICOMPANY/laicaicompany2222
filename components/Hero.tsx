@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 
 export const Hero: React.FC = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -18,13 +19,13 @@ export const Hero: React.FC = () => {
   }, []);
 
   return (
-    <section className="relative w-full h-[120vh] flex flex-col items-center justify-center overflow-hidden bg-black text-white">
+    <section className="relative w-full h-[120vh] flex flex-col items-center justify-center overflow-hidden bg-transparent text-white">
       <style>{`
         .light-rays {
           position: absolute;
           top: 50%;
           left: 50%;
-          width: 200vw;
+          width: 200%;
           height: 200vh;
           transform: translate(-50%, -50%);
           background: conic-gradient(
@@ -40,9 +41,7 @@ export const Hero: React.FC = () => {
             transparent 350deg 360deg
           );
           animation: spin 60s linear infinite;
-          filter: blur(10px);
-          opacity: 0.8;
-          mix-blend-mode: screen;
+          opacity: 0.5;
         }
 
         .light-rays::after {
@@ -61,32 +60,85 @@ export const Hero: React.FC = () => {
       <div className="light-rays pointer-events-none z-0"></div>
 
       {/* Core Glowing Core */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vw] md:w-[30vw] md:h-[30vw] bg-blue-400/20 mix-blend-screen rounded-full filter blur-[100px] pointer-events-none z-0"></div>
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] aspect-square bg-blue-400/20 rounded-full blur-3xl pointer-events-none z-0"></div>
+
+      {/* News Collage Background */}
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none flex items-center justify-center opacity-70 md:opacity-[0.3]">
+        {isClient && (
+          <div className="relative w-full max-w-[430px] h-[120vh]">
+            {/* News 1 to 4 (Background Far) */}
+            <motion.img 
+              initial={{ opacity: 0, scale: 0.8, rotate: -15 }} animate={{ opacity: 1, scale: 1, rotate: -10 }} transition={{ duration: 1.5, ease: "easeOut" }}
+              src="/news1.png" className="absolute w-36 opacity-60 rounded-xl object-cover"
+              style={{ top: '20%', left: 'calc(50% - 180px)' }} />
+            <motion.img 
+              initial={{ opacity: 0, scale: 0.8, rotate: 15 }} animate={{ opacity: 1, scale: 1, rotate: 12 }} transition={{ duration: 1.5, ease: "easeOut", delay: 0.1 }}
+              src="/news2.png" className="absolute w-40 opacity-60 rounded-xl object-cover"
+              style={{ top: '26%', right: 'calc(50% - 170px)' }} />
+            <motion.img 
+              initial={{ opacity: 0, scale: 0.8, rotate: 5 }} animate={{ opacity: 1, scale: 1, rotate: -8 }} transition={{ duration: 1.5, ease: "easeOut", delay: 0.2 }}
+              src="/news3.png" className="absolute w-32 opacity-50 rounded-xl object-cover"
+              style={{ bottom: '25%', right: 'calc(50% - 160px)' }} />
+            <motion.img 
+              initial={{ opacity: 0, scale: 0.8, rotate: -5 }} animate={{ opacity: 1, scale: 1, rotate: 8 }} transition={{ duration: 1.5, ease: "easeOut", delay: 0.3 }}
+              src="/news4.png" className="absolute w-36 opacity-50 rounded-xl object-cover"
+              style={{ bottom: '33%', left: 'calc(50% - 170px)' }} />
+
+            {/* News 5 to 7 (Mid layer) */}
+            <motion.img 
+              initial={{ opacity: 0, scale: 0.9, rotate: -10 }} animate={{ opacity: 1, scale: 1, rotate: -5 }} transition={{ duration: 1.5, ease: "easeOut", delay: 0.4 }}
+              src="/news5.png" className="absolute w-36 opacity-70 rounded-xl object-cover"
+              style={{ top: '18%', left: 'calc(50% - 40px)' }} />
+            <motion.img 
+              initial={{ opacity: 0, scale: 0.9, rotate: 12 }} animate={{ opacity: 1, scale: 1, rotate: 18 }} transition={{ duration: 1.5, ease: "easeOut", delay: 0.5 }}
+              src="/news6.png" className="absolute w-40 opacity-70 rounded-xl object-cover"
+              style={{ bottom: '15%', right: 'calc(50% - 10px)' }} />
+            <motion.img 
+              initial={{ opacity: 0, scale: 0.9, rotate: 0 }} animate={{ opacity: 1, scale: 1, rotate: -3 }} transition={{ duration: 1.5, ease: "easeOut", delay: 0.6 }}
+              src="/news7.png" className="absolute w-28 opacity-60 rounded-xl object-cover"
+              style={{ top: '45%', left: 'calc(50% - 190px)' }} />
+
+            {/* News 8 to 10 (Foreground overlap) */}
+            <motion.img 
+              initial={{ opacity: 0, scale: 0.95, rotate: -15 }} animate={{ opacity: 1, scale: 1, rotate: -8 }} transition={{ duration: 1.5, ease: "easeOut", delay: 0.7 }}
+              src="/news8.png" className="absolute w-32 opacity-80 rounded-xl object-cover"
+              style={{ top: '48%', right: 'calc(50% - 190px)' }} />
+            <motion.img 
+              initial={{ opacity: 0, scale: 0.95, rotate: 8 }} animate={{ opacity: 1, scale: 1, rotate: 5 }} transition={{ duration: 1.5, ease: "easeOut", delay: 0.8 }}
+              src="/news9.png" className="absolute w-40 opacity-80 rounded-xl object-cover"
+              style={{ top: '32%', left: 'calc(50% - 120px)' }} />
+            <motion.img 
+              initial={{ opacity: 0, scale: 0.95, rotate: -5 }} animate={{ opacity: 1, scale: 1, rotate: -2 }} transition={{ duration: 1.5, ease: "easeOut", delay: 0.9 }}
+              src="/news10.png" className="absolute w-36 opacity-80 rounded-xl object-cover"
+              style={{ bottom: '35%', right: 'calc(50% - 100px)' }} />
+          </div>
+        )}
+      </div>
 
       {/* Dynamic Parallax Typography */}
       <div className="relative z-10 w-full px-6 md:px-20 text-center flex flex-col items-center">
         {isClient && (
-          <div
-            className="flex flex-col items-center transition-transform duration-300 ease-out"
-            style={{
-              transform: `translate(${mousePosition.x * -30}px, ${mousePosition.y * -20}px)`
-            }}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: 'easeOut', delay: 0.5 }}
+            className="flex flex-col items-center gap-4 text-center z-10"
           >
-            <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-black font-display tracking-tight w-full max-w-7xl mx-auto text-white text-center break-keep leading-[1.5] md:leading-tight">
-              <span className="block mb-4 md:mb-2 text-center">
-                <span className="bg-[#1D4ED8] px-3 md:px-4 py-1.5 box-decoration-clone">중국인 고객이 이미 많으신가요?</span>
-              </span>
-              <span className="inline-block mb-6 md:mb-12">그렇다면 잘못찾아오셨습니다</span>
-            </h1>
-            <div className="mt-6 md:mt-8 flex flex-col items-center">
-              <p className="text-lg sm:text-xl md:text-3xl font-bold tracking-tight text-white inline-block border-b-2 border-white/80 pb-1 break-keep leading-relaxed">
-                중국 SNS플랫폼 전문 광고대행사
-              </p>
-              <p className="font-paperlogy font-light text-sm md:text-base text-gray-300 mt-3 md:mt-4 tracking-wider">
-                불만족시 100% 환불
-              </p>
+            <div className="flex flex-col items-center w-full px-4">
+              <h1 
+                className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tighter leading-snug text-white break-keep text-center"
+                style={{ textShadow: '0 2px 4px rgba(0,0,0,1), 0 0 15px rgba(0,0,0,0.8), 0 0 35px rgba(0,0,0,0.8), 0 0 50px rgba(0,0,0,0.6)' }}
+              >
+                한국인 고객 매출만으로,<br/>
+                <span 
+                  className="text-[#38bdf8]"
+                  style={{ textShadow: '0 2px 4px rgba(0,0,0,0.9), 0 0 15px rgba(56,189,248,0.8), 0 0 30px rgba(56,189,248,0.6)' }}
+                >
+                  정말
+                </span> 충분하신가요?
+              </h1>
             </div>
-          </div>
+          </motion.div>
         )}
       </div>
 
