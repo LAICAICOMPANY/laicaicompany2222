@@ -32,7 +32,7 @@ const MainPage: React.FC = () => {
   const isLightMode = false;
 
   return (
-    <div className="min-h-screen font-sans relative text-white bg-[#0A0F1D]">
+    <div className="min-h-screen font-sans relative text-white bg-[#0A0F1D] overflow-x-hidden w-full">
       <MetallicBackground />
       <div className="fixed inset-0 pointer-events-none z-[999] bg-noise opacity-[0.03] mix-blend-overlay"></div>
 
@@ -83,11 +83,14 @@ const MainPage: React.FC = () => {
   );
 };
 
+import SuccessPage from './pages/SuccessPage';
+
 const App: React.FC = () => {
   return (
     <Routes>
       <Route path="/" element={<MainPage />} />
       <Route path="/contact" element={<ContactPage />} />
+      <Route path="/success" element={<SuccessPage />} />
     </Routes>
   );
 };

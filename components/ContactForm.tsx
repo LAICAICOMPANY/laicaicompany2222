@@ -1,7 +1,66 @@
-import React from 'react';
-import { Mail, Phone } from 'lucide-react';
+import React, { useState } from 'react';
+import { Mail, Phone, Loader2, CheckCircle2, AlertCircle } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 export const ContactForm: React.FC = () => {
+  const navigate = useNavigate();
+  const [status, setStatus] = useState<'idle' | 'loading' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const [formData, setFormData] = useState({
+    name: '',
+    phone: '',
+    email: '',
+    message: '',
+    honeypot: '' // Spam protection
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setStatus('loading');
+    setErrorMessage('');
+
+    try {
+      const response = await fetch('/.netlify/functions/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
+
+      let data;
+      const text = await response.text();
+      try {
+        data = JSON.parse(text);
+      } catch (e) {
+        console.error('Non-JSON response:', text);
+        setStatus('error');
+        setErrorMessage('서버 응답 오류 (Netlify 환경인지, localhost:8888 접속인지 확인해주세요)');
+        return;
+      }
+
+      if (response.ok) {
+        setFormData({ name: '', phone: '', email: '', message: '', honeypot: '' });
+        navigate('/success');
+      } else {
+        setStatus('error');
+        setErrorMessage(data?.error || '전송에 실패했습니다. 다시 시도해주세요.');
+      }
+    } catch (error) {
+      console.error('Fetch error:', error);
+      setStatus('error');
+      setErrorMessage('네트워크 통신 오류가 발생했습니다. (netlify dev 터미널 실행 여부 확인)');
+    }
+  };
+
   return (
     <section id="contact" className="py-16 md:py-32 relative px-4">
       <div className="container mx-auto px-4 sm:px-6 lg:px-12 max-w-5xl">
@@ -19,17 +78,33 @@ export const ContactForm: React.FC = () => {
 
           <div className="w-full">
             <div className="bg-white p-6 sm:p-10 md:p-14 rounded-[2rem] md:rounded-[2.5rem] shadow-xl shadow-black/5 border border-black/5">
-              <form
-                action="https://formspree.io/f/meeagqzq"
-                method="POST"
-                className="space-y-8"
-              >
+              <form onSubmit={handleSubmit} className="space-y-8">
+                {/* Honeypot Field for Spam Protection */}
+                <input
+                  type="text"
+                  name="honeypot"
+                  value={formData.honeypot}
+                  onChange={handleChange}
+                  style={{ display: 'none' }}
+                  tabIndex={-1}
+                  autoComplete="off"
+                />
+
+                {status === 'error' && (
+                  <div className="bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded-xl flex items-center gap-3 animate-fade-in-up">
+                    <AlertCircle className="w-5 h-5 flex-shrink-0" />
+                    <p className="text-sm font-medium">{errorMessage}</p>
+                  </div>
+                )}
+
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div className="space-y-2">
                     <label className="text-xs text-brand-gray font-semibold uppercase tracking-widest">이름</label>
                     <input
                       type="text"
                       name="name"
+                      value={formData.name}
+                      onChange={handleChange}
                       placeholder="홍길동"
                       required
                       className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-4 text-brand-gray placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all font-medium"
@@ -40,6 +115,8 @@ export const ContactForm: React.FC = () => {
                     <input
                       type="text"
                       name="phone"
+                      value={formData.phone}
+                      onChange={handleChange}
                       placeholder="010-0000-0000"
                       required
                       className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-4 text-brand-gray placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all font-medium"
@@ -52,6 +129,8 @@ export const ContactForm: React.FC = () => {
                   <input
                     type="email"
                     name="email"
+                    value={formData.email}
+                    onChange={handleChange}
                     placeholder="example@email.com"
                     required
                     className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-4 text-brand-gray placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all font-medium"
@@ -63,6 +142,8 @@ export const ContactForm: React.FC = () => {
                   <textarea
                     rows={4}
                     name="message"
+                    value={formData.message}
+                    onChange={handleChange}
                     placeholder="어떤 프로젝트를 구상 중이신가요?"
                     required
                     className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-4 text-brand-gray placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all resize-none font-medium"
@@ -71,9 +152,17 @@ export const ContactForm: React.FC = () => {
 
                 <button
                   type="submit"
-                  className="w-full bg-blue-600 text-white font-bold text-lg py-5 rounded-xl hover:bg-blue-700 transition-colors duration-300 mt-4 shadow-lg shadow-blue-500/30"
+                  disabled={status === 'loading'}
+                  className={`w-full flex items-center justify-center gap-2 bg-blue-600 text-white font-bold text-lg py-5 rounded-xl hover:bg-blue-700 transition-colors duration-300 mt-4 shadow-lg shadow-blue-500/30 ${status === 'loading' ? 'opacity-70 cursor-not-allowed' : ''}`}
                 >
-                  문의 보내기
+                  {status === 'loading' ? (
+                    <>
+                      <Loader2 className="w-6 h-6 animate-spin" />
+                      <span>처리 중...</span>
+                    </>
+                  ) : (
+                    '문의 보내기'
+                  )}
                 </button>
               </form>
             </div>
