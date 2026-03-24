@@ -7,6 +7,20 @@ export const handler = async (event: any, context: any) => {
   }
 
   try {
+    if (!process.env.RESEND_API_KEY) {
+      return {
+        statusCode: 500,
+        body: JSON.stringify({ error: 'Netlify 환경 변수에 RESEND_API_KEY가 설정되지 않았습니다.' })
+      };
+    }
+    
+    if (!process.env.CONTACT_TO_EMAIL || !process.env.CONTACT_FROM_EMAIL) {
+      return {
+        statusCode: 500,
+        body: JSON.stringify({ error: 'Netlify 환경 변수에 이메일 설정(CONTACT_TO_EMAIL, CONTACT_FROM_EMAIL)이 누락되었습니다.' })
+      };
+    }
+
     const data = JSON.parse(event.body || '{}');
     const { name, phone, email, message, honeypot } = data;
 
@@ -57,9 +71,10 @@ export const handler = async (event: any, context: any) => {
     if (!res.ok) {
       const errorData = await res.json();
       console.error('Resend Error:', errorData);
+      const resendErrorMsg = errorData?.message || JSON.stringify(errorData);
       return {
         statusCode: 500,
-        body: JSON.stringify({ error: 'Failed to send email via Resend' })
+        body: JSON.stringify({ error: `Resend 발송 실패: ${resendErrorMsg}` })
       };
     }
 
