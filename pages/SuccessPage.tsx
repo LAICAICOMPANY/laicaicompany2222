@@ -8,6 +8,10 @@ import { MetallicBackground } from '../components/MetallicBackground';
 const SuccessPage: React.FC = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
+    // Meta Pixel 전환 이벤트
+    if (typeof (window as any).fbq === 'function') {
+      (window as any).fbq('track', 'Lead');
+    }
   }, []);
 
   return (
