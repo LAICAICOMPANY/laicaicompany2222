@@ -125,17 +125,17 @@ export const Hero: React.FC = () => {
             className="flex flex-col items-center gap-4 text-center z-10"
           >
             <div className="flex flex-col items-center w-full px-4">
-              <h1 
-                className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tighter leading-snug text-white break-keep text-center"
+              <h1
+                className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tighter leading-snug text-white break-keep text-center font-paperlogy"
                 style={{ textShadow: '0 2px 4px rgba(0,0,0,1), 0 0 15px rgba(0,0,0,0.8), 0 0 35px rgba(0,0,0,0.8), 0 0 50px rgba(0,0,0,0.6)' }}
               >
-                한국인 고객 매출만으로,<br/>
-                <span 
+                <span
                   className="text-[#38bdf8]"
                   style={{ textShadow: '0 2px 4px rgba(0,0,0,0.9), 0 0 15px rgba(56,189,248,0.8), 0 0 30px rgba(56,189,248,0.6)' }}
                 >
-                  정말
-                </span> 충분하신가요?
+                  한번 더
+                </span> 생각해보세요.<br/>
+                급할 필요 없습니다.
               </h1>
             </div>
           </motion.div>
