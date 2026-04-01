@@ -49,9 +49,9 @@ const MainPage: React.FC = () => {
         <Statistics />
         <TransitionText lines={[
           <div className="flex flex-col items-center text-center opacity-80 transition-opacity duration-1000 hover:opacity-100">
-            <span className="text-xl sm:text-2xl font-semibold tracking-tight text-current mb-1">누군가는 바꿀 수 없는</span>
-            <span className="text-xl sm:text-2xl font-semibold tracking-tight text-current">
-              시대의 흐름을 <span className="text-red-500 text-2xl sm:text-3xl font-extrabold mx-[0.1em]">불평</span>만 하고,
+            <span className="text-3xl sm:text-4xl font-extrabold tracking-tight text-current mb-1">
+              누군가는 바꿀 수 없는<br/>
+              시대의 흐름을 <span className="text-red-500">지나치고</span>
             </span>
           </div>,
           <div className="h-24 w-[2px] bg-gradient-to-b from-current to-transparent opacity-20 my-4" />,
@@ -70,12 +70,12 @@ const MainPage: React.FC = () => {
             <AnimatedChevrons />
           </div>
         ]} />
-        <SuccessStories />
+        <div id="work"><SuccessStories /></div>
         <TargetAudience />
         <Philosophy />
         <ImageGallery />
-        <About />
-        <ContactCTA />
+        <div id="about"><About /></div>
+        <div id="contact"><ContactCTA /></div>
       </main>
 
       <Footer />

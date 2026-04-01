@@ -32,9 +32,9 @@ export const About: React.FC = () => {
               </span>
             </div>
             
-            <p className="text-3xl md:text-6xl lg:text-7xl font-paperlogy font-bold leading-tight tracking-tight break-keep text-white mt-4 text-center">
-              저희는 컨텐츠 집행만 하지 않습니다 <br />
-              고객님의 <span className="underline decoration-blue-500 underline-offset-4 md:underline-offset-8">전환</span>까지 책임지고 함께합니다
+            <p className="text-[clamp(1.6rem,5vw,4.5rem)] font-paperlogy font-bold leading-tight tracking-tight text-white mt-4 text-center whitespace-nowrap">
+              컨텐츠부터 매출 전환까지<br />
+              책임지고 함께합니다.
             </p>
           </div>
         </div>

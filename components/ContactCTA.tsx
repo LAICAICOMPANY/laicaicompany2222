@@ -8,8 +8,8 @@ export const ContactCTA: React.FC = () => {
         <div className="flex flex-col items-center text-center">
           
           <h4 className="text-blue-400 font-semibold uppercase tracking-widest mb-4 md:mb-6 text-xs md:text-sm">Contact Us</h4>
-          <h2 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter leading-tight mb-6 md:mb-8 text-white/95 break-keep">
-            저희와 프로젝트를 함께 <br className="block sm:hidden" /><span className="text-blue-500">하시겠습니까?</span>
+          <h2 className="text-[clamp(1.8rem,5.5vw,4.5rem)] font-bold tracking-tighter leading-tight mb-6 md:mb-8 text-white/95 whitespace-nowrap">
+            저희와 함께 <span className="text-blue-500">하시겠습니까?</span>
           </h2>
           <p className="text-white/70 text-base sm:text-lg leading-relaxed font-light mx-4 md:mx-auto max-w-md mb-8 md:mb-12 break-keep">
             중국인 고객 유입이 가능한지 알아보고 싶다면?

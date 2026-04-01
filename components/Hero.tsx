@@ -63,7 +63,7 @@ export const Hero: React.FC = () => {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] aspect-square bg-blue-400/20 rounded-full blur-3xl pointer-events-none z-0"></div>
 
       {/* News Collage Background */}
-      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none flex items-center justify-center opacity-70 md:opacity-[0.3]">
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none flex items-center justify-center opacity-40 md:opacity-[0.2]">
         {isClient && (
           <div className="relative w-full max-w-[430px] h-[120vh]">
             {/* News 1 to 4 (Background Far) */}
@@ -130,8 +130,7 @@ export const Hero: React.FC = () => {
                 style={{ textShadow: '0 2px 4px rgba(0,0,0,1), 0 0 15px rgba(0,0,0,0.8), 0 0 35px rgba(0,0,0,0.8), 0 0 50px rgba(0,0,0,0.6)' }}
               >
                 <span
-                  className="text-[#38bdf8]"
-                  style={{ textShadow: '0 2px 4px rgba(0,0,0,0.9), 0 0 15px rgba(56,189,248,0.8), 0 0 30px rgba(56,189,248,0.6)' }}
+                  className="text-white"
                 >
                   한번 더
                 </span> 생각해보세요.<br/>
