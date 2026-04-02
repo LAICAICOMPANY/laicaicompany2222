@@ -23,6 +23,24 @@ const UpwardChevrons = ({ color }: { color: string }) => (
 
 const cases = [
   {
+    id: 0,
+    src: '/review4.png',
+    alt: '샤오홍슈 마케팅 사례 - 요식업',
+    industry: '요식업',
+    duration: '중국인 고객 급증 사례',
+    period: '샤오홍슈 운영 2개월',
+    name: '000식당',
+    metricNumber: '3배',
+    metricUnit: '',
+    metricLabel: '중국인 고객',
+    metricAction: '증가',
+    context: '중국인 손님 유입 전무에서 매출 급상승',
+    numberColor: 'text-green-400',
+    chevronColor: 'text-green-400',
+    tagStyle: 'bg-green-500/15 text-green-400 border border-green-500/20',
+    borderGlow: 'hover:border-green-500/30',
+  },
+  {
     id: 1,
     src: '/review1.png',
     alt: '샤오홍슈 마케팅 사례 3',
