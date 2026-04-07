@@ -22,7 +22,7 @@ export const handler = async (event: any, context: any) => {
     }
 
     const data = JSON.parse(event.body || '{}');
-    const { name, phone, email, message, honeypot } = data;
+    const { name, phone, email, message, honeypot, kakaoId } = data;
 
     // Honeypot spam protection
     if (honeypot) {
@@ -34,7 +34,7 @@ export const handler = async (event: any, context: any) => {
     }
 
     // Required field validation
-    if (!name || !phone || !email || !message) {
+    if (!name || !phone || !email || !message || !kakaoId) {
       return {
         statusCode: 400,
         body: JSON.stringify({ error: 'All fields are required' })
@@ -47,6 +47,7 @@ export const handler = async (event: any, context: any) => {
       <p><strong>Name:</strong> ${name}</p>
       <p><strong>Phone:</strong> ${phone}</p>
       <p><strong>Email:</strong> ${email}</p>
+      <p><strong>KakaoTalk ID:</strong> ${kakaoId || '미입력'}</p>
       <br />
       <p><strong>Message:</strong></p>
       <pre style="white-space: pre-wrap; font-family: sans-serif;">${message}</pre>

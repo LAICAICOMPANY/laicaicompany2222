@@ -12,6 +12,7 @@ export const ContactForm: React.FC = () => {
     phone: '',
     email: '',
     message: '',
+    kakaoId: '',
     honeypot: '' // Spam protection
   });
 
@@ -26,6 +27,13 @@ export const ContactForm: React.FC = () => {
     e.preventDefault();
     setStatus('loading');
     setErrorMessage('');
+
+    const digitsOnly = formData.phone.replace(/\D/g, '');
+    if (digitsOnly.length !== 11) {
+      setStatus('error');
+      setErrorMessage('전화번호는 숫자 11자리를 정확히 입력해주세요. (예: 01012345678)');
+      return;
+    }
 
     try {
       const response = await fetch('/.netlify/functions/contact', {
@@ -48,7 +56,7 @@ export const ContactForm: React.FC = () => {
       }
 
       if (response.ok) {
-        setFormData({ name: '', phone: '', email: '', message: '', honeypot: '' });
+        setFormData({ name: '', phone: '', email: '', message: '', kakaoId: '', honeypot: '' });
         navigate('/success');
       } else {
         setStatus('error');
@@ -132,6 +140,19 @@ export const ContactForm: React.FC = () => {
                     value={formData.email}
                     onChange={handleChange}
                     placeholder="example@email.com"
+                    required
+                    className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-4 text-brand-gray placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all font-medium"
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <label className="text-xs text-brand-gray font-semibold uppercase tracking-widest">카카오톡 아이디</label>
+                  <input
+                    type="text"
+                    name="kakaoId"
+                    value={formData.kakaoId}
+                    onChange={handleChange}
+                    placeholder="카카오톡 아이디를 입력해주세요"
                     required
                     className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-4 text-brand-gray placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all font-medium"
                   />
