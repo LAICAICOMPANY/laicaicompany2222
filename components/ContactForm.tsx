@@ -8,11 +8,13 @@ export const ContactForm: React.FC = () => {
   const [errorMessage, setErrorMessage] = useState('');
 
   const [formData, setFormData] = useState({
+    company: '',
     name: '',
     phone: '',
     email: '',
     message: '',
     kakaoId: '',
+    xiaohongshuExp: '',
     honeypot: '' // Spam protection
   });
 
@@ -56,7 +58,7 @@ export const ContactForm: React.FC = () => {
       }
 
       if (response.ok) {
-        setFormData({ name: '', phone: '', email: '', message: '', kakaoId: '', honeypot: '' });
+        setFormData({ company: '', name: '', phone: '', email: '', message: '', kakaoId: '', xiaohongshuExp: '', honeypot: '' });
         navigate('/success');
       } else {
         setStatus('error');
@@ -104,6 +106,19 @@ export const ContactForm: React.FC = () => {
                     <p className="text-sm font-medium">{errorMessage}</p>
                   </div>
                 )}
+
+                <div className="space-y-2">
+                  <label className="text-xs text-brand-gray font-semibold uppercase tracking-widest">업체명</label>
+                  <input
+                    type="text"
+                    name="company"
+                    value={formData.company}
+                    onChange={handleChange}
+                    placeholder="업체명을 입력해주세요"
+                    required
+                    className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-4 text-brand-gray placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all font-medium"
+                  />
+                </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div className="space-y-2">
@@ -156,6 +171,35 @@ export const ContactForm: React.FC = () => {
                     required
                     className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-4 text-brand-gray placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all font-medium"
                   />
+                </div>
+
+                <div className="space-y-3">
+                  <label className="text-xs text-brand-gray font-semibold uppercase tracking-widest">샤오홍슈 마케팅 경험</label>
+                  <div className="flex gap-6">
+                    <label className="flex items-center gap-2 cursor-pointer group">
+                      <input
+                        type="radio"
+                        name="xiaohongshuExp"
+                        value="있음"
+                        checked={formData.xiaohongshuExp === '있음'}
+                        onChange={handleChange}
+                        required
+                        className="w-4 h-4 accent-blue-600"
+                      />
+                      <span className="text-brand-gray font-medium group-hover:text-blue-600 transition-colors">있음</span>
+                    </label>
+                    <label className="flex items-center gap-2 cursor-pointer group">
+                      <input
+                        type="radio"
+                        name="xiaohongshuExp"
+                        value="없음"
+                        checked={formData.xiaohongshuExp === '없음'}
+                        onChange={handleChange}
+                        className="w-4 h-4 accent-blue-600"
+                      />
+                      <span className="text-brand-gray font-medium group-hover:text-blue-600 transition-colors">없음</span>
+                    </label>
+                  </div>
                 </div>
 
                 <div className="space-y-2">
